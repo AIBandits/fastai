@@ -21,7 +21,7 @@ def loss_batch(model:nn.Module, xb:Tensor, yb:Tensor, loss_func:OptLossFunc=None
     cb_handler = ifnone(cb_handler, CallbackHandler())
     if not is_listy(xb): xb = [xb]
     if not is_listy(yb): yb = [yb]
-    out = model(*xb)
+    out = model(*xb, *yb)
     out = cb_handler.on_loss_begin(out)
 
     if not loss_func: return to_detach(out), yb[0].detach()
