@@ -262,7 +262,7 @@ class ItemList():
 
     def label_from_folder(self, label_cls:Callable=None, **kwargs)->'LabelList':
         "Give a label to each filename depending on its folder."
-        func = lambda o: int(o.parts[-2]) if o.parts[-2].isdigit() else os.parts[-2]
+        func = lambda o: int(o.parts[-2]) if o.parts[-2].isdigit() else o.parts[-2]
         return self.label_from_func(func=func, label_cls=label_cls, **kwargs)
 
     def label_from_re(self, pat:str, full_path:bool=False, label_cls:Callable=None, **kwargs)->'LabelList':
